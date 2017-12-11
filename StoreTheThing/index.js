@@ -4,21 +4,30 @@ var key = datastore.key(['Thing']);
 function getTheThings(req, res) {
   let query = datastore.createQuery(key);
 
-  datastore.runQuery(query, function (err, entities) {
+  // datastore.runQuery(query, function (err, entities) {
 
-    if (Object.keys(err).length > 0) {
-      // Error handling omitted.
-      res.status(400)
-      .send({error: JSON.stringify(err)});
-    }
+  //   if (Object.keys(err).length > 0) {
+  //     // Error handling omitted.
+  //     res.status(400)
+  //     .send({error: JSON.stringify(err)});
+  //   }
+
+  //   res.status(200)
+  //   .send({helloFromBT: "Is veryyyy naaaice"});
+
+  //   res.status(200)
+  //     .send(entities);
+  // });
+
+  datastore.runQuery(query, function(err, entities) {
+    // entities = An array of records.
+  
+    // Access the Key object for an entity.
+    var firstEntityKey = entities[0][datastore.KEY];
 
     res.status(200)
-    .send({helloFromBT: "Is veryyyy naaaice"});
-
-    res.status(200)
-      .send(entities);
+      .send({first: firstEntityKey});
   });
-
 }
 
 function saveNewThing(req, res) {
