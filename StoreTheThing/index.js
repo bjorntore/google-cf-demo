@@ -13,6 +13,9 @@ function getTheThings(req, res) {
     }
 
     res.status(200)
+    .send({helloFromBT: "Is veryyyy naaaice"});
+
+    res.status(200)
       .send(entities);
   });
 
