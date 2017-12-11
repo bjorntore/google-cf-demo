@@ -44,7 +44,7 @@ function saveNewThing(req, res) {
 
   datastore.save({
     key: key,
-    data: req.body.theThing
+    data: JSON.stringify(req.body.theThing)
   }, function (err) {
     if (!err) {
       res
