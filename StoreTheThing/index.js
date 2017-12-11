@@ -7,7 +7,7 @@ function getTheThings(req, res) {
 }
 
 function saveNewThing(req, res) {
-  let theThing = req.body.theThing;
+  let theThing = JSON.stringify({theThing: "TESTTHING"});
 
   datastore.save({
     key: key,
