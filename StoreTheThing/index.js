@@ -5,8 +5,14 @@ function getTheThings(req, res) {
   let query = datastore.createQuery(key);
 
   datastore.runQuery(query, function (err, entities) {
-    res
-      .status(200)
+
+    if (err) {
+      // Error handling omitted.
+      res.status(400)
+      .send({error: err});
+    }
+
+    res.status(200)
       .send(entities);
   });
 
