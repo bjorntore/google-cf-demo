@@ -1,0 +1,12 @@
+- Create new project in Google Cloud Platform
+- Enable Cloud Functions API
+- Create a github repo
+- Add a folder "MyFunction" with a index.js file.
+- Export a named function MyFunction which takes params (req, res) and returns a http response.
+- Create Cloud Source repo in Google Cloud Platform
+- Link it to Github via your account
+- Create new cloud function with git repo.
+	- Rember to set correct folder name
+	- And correct function name
+
+- Create more advanced function with GET and POST and google cloud storage
