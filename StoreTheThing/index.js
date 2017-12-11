@@ -6,7 +6,7 @@ function handleGET (req, res) {
     res.status(403).send('Forbidden!');
   }
   
-  exports.storeTheTing = function storeTheTing (req, res) {
+  exports.storeTheTing = function (req, res) {
     switch (req.method) {
       case 'GET':
         handleGET(req, res);
