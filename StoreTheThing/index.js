@@ -7,7 +7,7 @@ function getTheThings(req, res) {
   datastore.runQuery(query, function (err, entities) {
     res
       .status(200)
-      .send(JSON.stringify(entities));
+      .send(entities);
   });
 
 }
