@@ -2,34 +2,10 @@ const datastore = require('@google-cloud/datastore')();
 var key = datastore.key(['Thing']);
 
 function getTheThings(req, res) {
-  let query = datastore.createQuery("Thing");
-
-  // datastore.runQuery(query, function (err, entities) {
-
-  //   if (Object.keys(err).length > 0) {
-  //     // Error handling omitted.
-  //     res.status(400)
-  //     .send({error: JSON.stringify(err)});
-  //   }
-
-  //   res.status(200)
-  //   .send({helloFromBT: "Is veryyyy naaaice"});
-
-  //   res.status(200)
-  //     .send(entities);
-  // });
-  let entitiesWithKeys = [];
+  let query = datastore.createQuery("Thing").select('__key__', 'data');
   datastore.runQuery(query, function(err, entities) {
-    let entitiesWithKeys = entities.map((obj) => {
-      obj.key = entity[datastore.KEY];
-      return obj;
-  })
-
-    res.status(200).send(entitiesWithKeys);
-    // return;
+    res.status(200).send(entities);
   });
-
-  // res.status(200).send("SHOULD NOT GET HERE");
 }
 
 function saveNewThing(req, res) {
