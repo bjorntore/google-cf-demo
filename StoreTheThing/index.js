@@ -18,7 +18,7 @@ function getTheThings(req, res) {
   //   res.status(200)
   //     .send(entities);
   // });
-
+  let entitiesWithKeys = [];
   datastore.runQuery(query, function(err, entities) {
     let entitiesWithKeys = entities.map((obj) => {
       obj.key = entity[datastore.KEY];
