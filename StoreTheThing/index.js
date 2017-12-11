@@ -23,7 +23,7 @@ function getTheThings(req, res) {
     // entities = An array of records.
   
     // Access the Key object for an entity.
-    var firstEntityKey = entities[0][datastore.KEY];
+    var firstEntityKey = entities[0];
 
     res.status(200)
       .send({first: firstEntityKey});
