@@ -32,7 +32,7 @@ function getTheThings(req, res) {
 function saveNewThing(req, res) {
 
   var data = {
-    data: req.body.theThing
+    data: req.body.theThing + ""
   };
 
   datastore.save({
