@@ -1,5 +1,4 @@
-const datastore = require('@google-cloud/datastore')();
-const key = datastore.key('Thing');
+
 
 function getTheThings(req, res) {
   let query = datastore.createQuery(key);
@@ -7,7 +6,10 @@ function getTheThings(req, res) {
 }
 
 function saveNewThing(req, res) {
-  let theThing = JSON.stringify({theThing: "TESTTHING"});
+  const datastore = require('@google-cloud/datastore')();
+  const key = datastore.key('Thing');
+
+  let theThing = "Test";
 
   datastore.save({
     key: key,
