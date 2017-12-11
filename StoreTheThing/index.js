@@ -2,8 +2,7 @@ const datastore = require('@google-cloud/datastore')();
 var key = datastore.key(['Thing']);
 
 function getTheThings(req, res) {
-  let keyTwo = datastore.key(['Thing']);
-  let query = datastore.createQuery(keyTwo);
+  let query = datastore.createQuery(key);
 
   // datastore.runQuery(query, function (err, entities) {
 
@@ -20,31 +19,25 @@ function getTheThings(req, res) {
   //     .send(entities);
   // });
 
-  // datastore.runQuery(query, function(err, entities) {
-  //   // entities = An array of records.
+  datastore.runQuery(query, function(err, entities) {
+    // entities = An array of records.
   
-  //   // Access the Key object for an entity.
-  //   // var firstEntityKey = entities[0];
+    // Access the Key object for an entity.
+    // var firstEntityKey = entities[0];
 
-  //   res.status(200).send({entities: JSON.stringify(entities)});
-  // });
-
-  datastore.runQuery(query, function(err, entities, info) {
-    if (err) {
-      res.status(400).send({error: JSON.stringify(err)});
-    }
-
-    // Respond to the front end with the contacts and the cursoring token
-    // from the query we just ran.
-    res.status(200).send(entities);
+    res.status(200).send({entities: JSON.stringify(entities)});
   });
 }
 
 function saveNewThing(req, res) {
 
+  var data = {
+    data: req.body.theThing
+  };
+
   datastore.save({
     key: key,
-    data: JSON.stringify(req.body.theThing)
+    data: data
   }, function (err) {
     if (!err) {
       res
