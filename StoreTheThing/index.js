@@ -2,18 +2,10 @@ const datastore = require('@google-cloud/datastore')();
 var key = datastore.key(['Thing']);
 
 function getTheThings(req, res) {
-  // let query = datastore.createQuery("Thing")
-  // datastore.runQuery(query, function(err, entities) {
-  //   res.status(200).send(entities);
-  // });
-  
   let query = datastore.createQuery("Thing");
-  datastore.runQuery(query)
-  .then((results) => {
-    // Task entities found.
-    const rows = results[0];
 
-    res.status(200).send(rows);
+  datastore.runQuery(query, function(err, entities, info) {
+    res.status(200).send(entities);
   });
 }
 
