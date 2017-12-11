@@ -25,6 +25,12 @@ function getTheThings(req, res) {
     // Access the Key object for an entity.
     // var firstEntityKey = entities[0];
 
+    if (entities.length > 0) {
+      var keys = entities.map(function(entity) {
+        return entity[datastore.KEY];
+      });
+    }
+
     res.status(200).send(entities);
     // return;
   });
