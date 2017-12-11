@@ -9,7 +9,7 @@ function getTheThings(req, res) {
     if (err) {
       // Error handling omitted.
       res.status(400)
-      .send({error: err});
+      .send({error: JSON.stringify(err)});
     }
 
     res.status(200)
