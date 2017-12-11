@@ -2,7 +2,7 @@ const datastore = require('@google-cloud/datastore')();
 var key = datastore.key(['Thing']);
 
 function getTheThings(req, res) {
-  let query = datastore.createQuery(key);
+  let query = datastore.createQuery("Thing");
 
   // datastore.runQuery(query, function (err, entities) {
 
@@ -25,7 +25,7 @@ function getTheThings(req, res) {
     // Access the Key object for an entity.
     // var firstEntityKey = entities[0];
 
-    res.status(200).send({entities: JSON.stringify(entities)});
+    res.status(200).send(entities);
     return;
   });
 
