@@ -6,7 +6,7 @@ function getTheThings(req, res) {
 
   datastore.runQuery(query, function (err, entities) {
 
-    if (err) {
+    if (Object.keys(err).length > 0) {
       // Error handling omitted.
       res.status(400)
       .send({error: JSON.stringify(err)});
