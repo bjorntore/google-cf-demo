@@ -23,10 +23,9 @@ function getTheThings(req, res) {
     // entities = An array of records.
   
     // Access the Key object for an entity.
-    var firstEntityKey = entities[0];
+    // var firstEntityKey = entities[0];
 
-    res.status(200)
-      .send({first: firstEntityKey});
+    res.status(200).send({entities: JSON.stringify(entities)});
   });
 }
 
