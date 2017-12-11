@@ -31,13 +31,9 @@ function getTheThings(req, res) {
 
 function saveNewThing(req, res) {
 
-  var data = {
-    data: req.data.theThing
-  };
-
   datastore.save({
     key: key,
-    data: data
+    data: req.body.theThing
   }, function (err) {
     if (!err) {
       res
