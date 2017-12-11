@@ -1,5 +1,5 @@
 const datastore = require('@google-cloud/datastore')();
-const key = "Thing";
+var key = datastore.key(['Thing']);
 
 function getTheThings(req, res) {
   let query = datastore.createQuery(key);
