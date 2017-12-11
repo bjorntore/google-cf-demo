@@ -20,18 +20,12 @@ function getTheThings(req, res) {
   // });
 
   datastore.runQuery(query, function(err, entities) {
-    // entities = An array of records.
-  
-    // Access the Key object for an entity.
-    // var firstEntityKey = entities[0];
+    let entitiesWithKeys = entities.map((obj) => {
+      obj.key = entity[datastore.KEY];
+      return obj;
+  })
 
-    if (entities.length > 0) {
-      var keys = entities.map(function(entity) {
-        return entity[datastore.KEY];
-      });
-    }
-
-    res.status(200).send(entities);
+    res.status(200).send(entitiesWithKeys);
     // return;
   });
 
