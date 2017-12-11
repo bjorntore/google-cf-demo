@@ -19,17 +19,17 @@ function getTheThings(req, res) {
   //     .send(entities);
   // });
 
-  datastore.runQuery(query, function(err, entities, info) {
+  datastore.runQuery(query, function(err, entities) {
     // entities = An array of records.
   
     // Access the Key object for an entity.
     // var firstEntityKey = entities[0];
 
     res.status(200).send(entities);
-    return;
+    // return;
   });
 
-  res.status(200).send("SHOULD NOT GET HERE");
+  // res.status(200).send("SHOULD NOT GET HERE");
 }
 
 function saveNewThing(req, res) {
