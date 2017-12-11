@@ -1,4 +1,5 @@
-
+const datastore = require('@google-cloud/datastore')();
+const key = "Thing";
 
 function getTheThings(req, res) {
   let query = datastore.createQuery(key);
@@ -6,23 +7,25 @@ function getTheThings(req, res) {
 }
 
 function saveNewThing(req, res) {
-  const datastore = require('@google-cloud/datastore')();
-  const key = datastore.key('Thing');
+  let theThing = req.body.theThing;
 
-  let theThing = "Test";
-
-  datastore.save({
-    key: key,
-    description: theThing
-  }, function (err) {
-    res
-      .status(400)
-      .send({
-        error: 'Failed to save thing with key ' + key.path
-      });
+  datastore.get(key, function(error, entity) {
+    if(error) {
+      res.status(400).send({error1: error});
+    } else {
+      //Make changes in entity.
+      datastore.save({
+        key: entity,
+        data: theThing
+      }, function(error) {
+        if(error) {
+          res.status(400).send({error2: error});
+        } else {
+          res.status(200).send("Entity saved");
+        }
+      })
+    }
   });
-
-  res.status(200).send('Saved the thing with key ' + key.path);
 }
 
 exports.storeTheTing = function (req, res) {
