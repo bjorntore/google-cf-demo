@@ -1,4 +1,4 @@
-export const tellMeMyName = (name) =>
-{
-    return "Your name is " + name;
+exports.tellMeMyName = function (req, res) {
+	let content =  { name: "BT", team: "GJERDE"};
+    res.status(200).send(content);
 }
